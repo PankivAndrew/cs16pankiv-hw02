@@ -23,8 +23,7 @@ public class LinkedNode {
         return next;
     }
 
-    public LinkedNode(Object data, LinkedNode next) {
+    public LinkedNode(Object data) {
         this.data = data;
-        this.next = next;
     }
 }
