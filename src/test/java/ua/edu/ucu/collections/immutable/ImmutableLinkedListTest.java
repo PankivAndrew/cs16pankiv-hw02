@@ -134,7 +134,7 @@ public class ImmutableLinkedListTest {
     @Test
     public void testAddFirst() {
         String expected = "1-->4-->7-->a-->8-->6.8";
-        testList = testList.addFirst(1);
+        testList = testList.addFirst(1);//
         assertEquals(expected,testList.toString());
     }
 
