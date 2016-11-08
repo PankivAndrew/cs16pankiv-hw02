@@ -68,9 +68,9 @@ public class ImmutableLinkedListTest {
     }
     @Test
     public void testGet() {
-        String expected = "7";
+        String expected = "6.8";
         Object for_test = null;
-        for_test = testList.get(1);
+        for_test = testList.get(4);
         assertEquals(expected, for_test.toString());
     }
     @Test
@@ -133,7 +133,7 @@ public class ImmutableLinkedListTest {
     }
     @Test
     public void testAddFirst() {
-        String expected = "1-->4-->7-->a-->8-->5";
+        String expected = "1-->4-->7-->a-->8-->6.8";
         testList = testList.addFirst(1);
         assertEquals(expected,testList.toString());
     }
@@ -142,13 +142,13 @@ public class ImmutableLinkedListTest {
 
     @Test
     public void testAddLast() {
-        String expected = "4-->7-->a-->8-->5-->1";
+        String expected = "4-->7-->a-->8-->6.8-->1";
         testList = testList.addLast(1);
-        assertEquals(expected,testList.toArray());
+        assertEquals(expected,testList.toString());
     }
     @Test
     public void testRemoveFirst() {
-        String expected = "7-->a-->8-->5";
+        String expected = "7-->a-->8-->6.8";
         testList = testList.removeFirst();
         assertEquals(expected,testList.toString());
     }
@@ -162,13 +162,13 @@ public class ImmutableLinkedListTest {
     public void testGetFirst() {
         String expected = "4";
         Object a = testList.getFirst();
-        assertEquals(expected,a);
+        assertEquals(expected,a.toString());
     }
     @Test
     public void testGetLast() {
-        String expected = "5";
+        String expected = "6.8";
         Object a = testList.getLast();
-        assertEquals(expected,a);
+        assertEquals(expected,a.toString());
     }
 
 
