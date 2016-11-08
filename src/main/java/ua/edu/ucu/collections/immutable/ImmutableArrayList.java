@@ -5,20 +5,25 @@ public class ImmutableArrayList implements ImmutableList {
 
     public ImmutableArrayList(Object[] list_of_elements) {
         this.list_of_elements = list_of_elements;
+
     }
 
-    public ImmutableList add(Object e){
+    public ImmutableArrayList add(Object e){
         Object[] new_lst = new Object[size() + 1];
-        for (int i = 0; i < size(); i ++){
-            new_lst[i] = this.list_of_elements[i];
+        if (size() == 0){
+            new_lst[0] = e;
+        }else {
+            for (int i = 0; i < size(); i++) {
+                new_lst[i] = list_of_elements[i];
+            }
+            new_lst[size()] = e;
         }
-        new_lst[-1] = e;
-        ImmutableArrayList newLinkedList = new ImmutableArrayList(new_lst);
-        return newLinkedList;
+        ImmutableArrayList newArrayList = new ImmutableArrayList(new_lst);
+        return newArrayList;
 
     } //додає елемент у кінець колекції
 
-    public ImmutableList add(int index, Object e)throws IndexOutOfBoundsException{
+    public ImmutableArrayList add(int index, Object e)throws IndexOutOfBoundsException{
         if (index > size() - 1) {
             throw new IndexOutOfBoundsException();
         }
@@ -28,7 +33,7 @@ public class ImmutableArrayList implements ImmutableList {
             new_lst[i] = this.list_of_elements[i];
         }
         new_lst[index] = e;
-        for (int i = index; i < size(); i++){
+        for (int i = index + 1; i < size() + 1; i++){
             new_lst[i] = this.list_of_elements[INDEX];
             INDEX++;
         }
@@ -37,7 +42,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     } //додає елемент до колекції за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
 
-    public ImmutableList addAll(Object[] c){
+    public ImmutableArrayList addAll(Object[] c){
         Object[] new_lst = new Object[size() + c.length];
         for( int i = 0; i < size(); i ++){
             new_lst[i] = this.list_of_elements[i];
@@ -93,7 +98,7 @@ public class ImmutableArrayList implements ImmutableList {
         Object [] new_list = new Object[size() - 1];
         this.list_of_elements[index] = null;
         int INDEX = 0;
-        for (int i = 0; i < new_list.length;i++){
+        for (int i = 0; i < new_list.length + 1;i++){
             if (this.list_of_elements[i] != null){
                 new_list[INDEX] = this.list_of_elements[i];
                 INDEX ++;
@@ -127,6 +132,7 @@ public class ImmutableArrayList implements ImmutableList {
         for (int i = 0; i < list_of_elements.length; i++) {
             if (list_of_elements[i] == e) {
                 index = i;
+                break;
             } else {
                 index = -1;
             }
@@ -136,8 +142,13 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     public int size(){
-        return this.list_of_elements.length;
+        if (list_of_elements != null){
+        return list_of_elements.length;
+    }else{
+        return 0;
+        }
     }
+
 
     public ImmutableArrayList clear(){
         ImmutableArrayList new_list = new ImmutableArrayList(null);
@@ -145,7 +156,7 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     public boolean isEmpty(){
-        if (this.size() != 0){
+        if (this.size() == 0){
             return true;
         }else{
             return false;
@@ -165,9 +176,10 @@ public class ImmutableArrayList implements ImmutableList {
     public String toString(){
         String str = "";
         for(int i = 0; i < size()-1;i++){
-            str += this.list_of_elements[i] + ",";
+            str += list_of_elements[i];
+            str += ",";
         }
-        str += this.list_of_elements[-1];
+        str += list_of_elements[size()-1];
         return str;
 
     }
