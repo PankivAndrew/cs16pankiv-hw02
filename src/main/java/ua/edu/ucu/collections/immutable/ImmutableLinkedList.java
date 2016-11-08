@@ -208,17 +208,16 @@ public class ImmutableLinkedList {
         }
         return str;
     }
-    public ImmutableLinkedList addFirst(Object e){
-        return this.add(0,e);
-    }
     public Object getFirst(){
-        return this.get(size()-2);
+        return this.get(0);
     }
     public ImmutableLinkedList addLast(Object e){
-        return this.add(e);
+        ImmutableLinkedList new_head = new ImmutableLinkedList(this.head);
+        new_head = new_head.add(e);
+        return new_head;
     }
     public Object getLast(){
-        return this.get(0);
+        return this.get(size()-1);
     }
     public ImmutableLinkedList removeFirst(){
         return this.remove(0);
